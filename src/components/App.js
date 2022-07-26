@@ -3,8 +3,8 @@ import shortid from 'shortid';
 import Form from './Form/Form';
 import Search from './Search/Search';
 import SearchContact from './SearchContact/SearchContact';
-import Contact from './Contacts/Contacts';
-import useLocalStorage from './Hooks/Hooks';
+// import Contact from './Contacts/Contacts';
+import useLocalStorage from '../Hooks/Hooks';
 
 export const App = () => {
   const [contacts, setContacts] = useLocalStorage('contacts', [
@@ -39,14 +39,11 @@ export const App = () => {
     <>
       <Form onSubmitForm={onSubmitForm} />
       <Search onSearchInput={event => setFilter(event.target.value)} />
-      {searchContact ? (
-        <SearchContact
-          searchContact={searchContact}
-          onDeleteContact={onDeleteContact}
-        />
-      ) : (
-        <Contact onDeleteContact={onDeleteContact} />
-      )}
+
+      <SearchContact
+        searchContact={searchContact}
+        onDeleteContact={onDeleteContact}
+      />
     </>
   );
 };
